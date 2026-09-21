@@ -42,13 +42,21 @@
     nixosModules.default = ./modules/panel.nix;
 
     overlays.default = final: prev: let
-      rustToolchain = with inputs.fenix.packages.${prev.stdenv.hostPlatform.system};
+      fenixPkgs = inputs.fenix.packages.${prev.stdenv.hostPlatform.system};
+      # For dev shells.
+      rustToolchain = with fenixPkgs;
         combine (
           with stable; [clippy rustc cargo rustfmt rust-src]
         );
+      # rust-src in the sysroot makes rustc bake its own store path into panic
+      # locations, pulling ~1GB of toolchain into the runtime closure.
+      rustBuildToolchain = with fenixPkgs;
+        combine (
+          with stable; [rustc cargo]
+        );
       rustPlatform = prev.makeRustPlatform {
-        cargo = rustToolchain;
-        rustc = rustToolchain;
+        cargo = rustBuildToolchain;
+        rustc = rustBuildToolchain;
       };
       # Statically linked so wings can embed it and extract it onto any host
       fusequota = prev.pkgsStatic.callPackage ./pkgs/fusequota/package.nix {};
@@ -64,25 +72,9 @@
       pkgs,
       system,
       ...
-    }: let
-      rustPlatform = pkgs.makeRustPlatform {
-        cargo = pkgs.rustToolchain;
-        rustc = pkgs.rustToolchain;
-      };
-    in {
-      inherit (pkgs) fusequota;
-      panel = pkgs.callPackage ./pkgs/panel/package.nix {
-        inherit rustPlatform;
-      };
-      panel-nightly = pkgs.callPackage ./pkgs/panel-nightly/package.nix {
-        inherit rustPlatform;
-      };
-      wings = pkgs.callPackage ./pkgs/wings/package.nix {
-        inherit rustPlatform;
-      };
-      wings-nightly = pkgs.callPackage ./pkgs/wings-nightly/package.nix {
-        inherit rustPlatform;
-      };
+    }: {
+      # From the overlay, so these can't drift from pkgs.panel etc.
+      inherit (pkgs) fusequota panel panel-nightly wings wings-nightly;
       microvm-test = let
         nixos = inputs.nixpkgs.lib.nixosSystem {
           inherit system;
