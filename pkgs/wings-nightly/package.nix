@@ -13,13 +13,13 @@
   zlib,
 }: let
   # Latest main branch commit
-  rev = "8b6d31376cf2437d398b03dbd19b913898e64acf";
-  version = "release-1.2.5-unstable-2026-10-17";
+  rev = "f211d601102d4339193359394d0b1bd1d9740228";
+  version = "release-1.2.6-unstable-2026-10-18";
   src = fetchFromGitHub {
     owner = "calagopus";
     repo = "wings";
     inherit rev;
-    sha256 = "sha256-Cp9W0q6kWIxChaATPTjg2nsx7TLLv16IhdgEnyTubZM=";
+    sha256 = "sha256-1jS7/WE6r/atm6GetoZaYWvam0yentekIDrg7AAHTHA=";
   };
 in
   rustPlatform.buildRustPackage (finalAttrs: {
