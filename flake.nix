@@ -40,6 +40,7 @@
         });
   in {
     nixosModules.default = ./modules/panel.nix;
+    nixosModules.wings = ./modules/wings.nix;
 
     overlays.default = final: prev: let
       fenixPkgs = inputs.fenix.packages.${prev.stdenv.hostPlatform.system};
@@ -81,6 +82,7 @@
           modules = [
             inputs.microvm.nixosModules.microvm
             inputs.self.nixosModules.default
+            inputs.self.nixosModules.wings
             ({pkgs, ...}: {
               nixpkgs.overlays = [inputs.self.overlays.default];
 
@@ -101,6 +103,11 @@
                   }
                   {
                     from = "host";
+                    host.port = 8080;
+                    guest.port = 8080;
+                  }
+                  {
+                    from = "host";
                     host.port = 2222;
                     guest.port = 22;
                   }
@@ -114,6 +121,20 @@
                 '';
                 database.createLocally = true;
                 redis.createLocally = true;
+              };
+
+              virtualisation.docker.enable = true;
+
+              services.calagopus-wings = {
+                enable = true;
+                config = {
+                  uuid = "00000000-0000-0000-0000-000000000000";
+                  token_id = "test";
+                  remote = "http://localhost:8000";
+                };
+                environmentFile = pkgs.writeText "wings-test-env" ''
+                  CALAGOPUS_TOKEN=test-only-not-for-production
+                '';
               };
 
               services.openssh = {
