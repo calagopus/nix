@@ -7,7 +7,7 @@
   perl,
 }: let
   rev = "3b276ef3eb9f825256b60356f52a8f55140dc776";
-  version = "release-1.2.3-unstable-2026-10-23";
+  version = "release-1.2.4-unstable-2026-10-23";
   src = fetchFromGitHub {
     owner = "calagopus";
     repo = "db-agent";
