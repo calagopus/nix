@@ -24,6 +24,14 @@ jobs:
               - 'flake.nix'
               - 'flake.lock'
               - 'pkgs/panel-nightly/**'
+            db-agent:
+              - 'flake.nix'
+              - 'flake.lock'
+              - 'pkgs/db-agent/**'
+            db-agent-nightly:
+              - 'flake.nix'
+              - 'flake.lock'
+              - 'pkgs/db-agent-nightly/**'
             fusequota:
               - 'flake.nix'
               - 'flake.lock'

@@ -63,6 +63,8 @@
       fusequota = prev.pkgsStatic.callPackage ./pkgs/fusequota/package.nix {};
     in {
       inherit rustToolchain fusequota;
+      db-agent = prev.callPackage ./pkgs/db-agent/package.nix {inherit rustPlatform;};
+      db-agent-nightly = prev.callPackage ./pkgs/db-agent-nightly/package.nix {inherit rustPlatform;};
       panel = prev.callPackage ./pkgs/panel/package.nix {inherit rustPlatform;};
       panel-nightly = prev.callPackage ./pkgs/panel-nightly/package.nix {inherit rustPlatform;};
       wings = prev.callPackage ./pkgs/wings/package.nix {inherit rustPlatform fusequota;};
@@ -75,7 +77,7 @@
       ...
     }: {
       # From the overlay, so these can't drift from pkgs.panel etc.
-      inherit (pkgs) fusequota panel panel-nightly wings wings-nightly;
+      inherit (pkgs) db-agent db-agent-nightly fusequota panel panel-nightly wings wings-nightly;
       microvm-test = let
         nixos = inputs.nixpkgs.lib.nixosSystem {
           inherit system;
