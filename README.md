@@ -6,6 +6,8 @@ Nix packages and modules for Calagopus
 - **panel-nightly** Nightly version of the panel built from commits on the main branch
 - **wings** Latest stable version of wings
 - **wings-nightly** Nightly version of wings built from commits on the main branch
+- **db-agent** Latest stable version of the database proxy/provisioning agent
+- **db-agent-nightly** Nightly version of db-agent built from commits on the main branch
 
 All packages are updated automatically (either version or commit bump) every six hours. You can see the updates [here](https://github.com/Saturn745/calagopus-nix/actions/workflows/update.yml)
 
