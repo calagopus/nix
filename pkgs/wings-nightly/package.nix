@@ -13,20 +13,20 @@
   zlib,
 }: let
   # Latest main branch commit
-  rev = "3092c21cf52a9376d4582b163cd8e2403acc0a44";
-  version = "release-1.2.7-unstable-2026-10-24";
+  rev = "38b7eac6c64ab95cd21613b34c3f4225f825db6b";
+  version = "release-1.2.7-unstable-2026-10-26";
   src = fetchFromGitHub {
     owner = "calagopus";
     repo = "wings";
     inherit rev;
-    sha256 = "sha256-OtWexozdkN4Wnnl7K/OaV/A+zlUdhK7bS+dAMJIwwHk=";
+    sha256 = "sha256-zHjRV67SVWGe5Ommm0+P0EtZMNSIxTNDd8YlSXMsjRA=";
   };
 in
   rustPlatform.buildRustPackage (finalAttrs: {
     pname = "calagopus-wings-nightly";
     inherit version src;
 
-    cargoHash = "sha256-RH2ALlvTIhWkv0ZiFjjdyixSeonYXUGPJNKTsa+/o58=";
+    cargoHash = "sha256-yup4oYYjrp1UXRpYXdRiGgFsp5g1fjTIxtUjiRlX5T4=";
 
     nativeBuildInputs = [
       autoPatchelfHook
