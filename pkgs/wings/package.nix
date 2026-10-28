@@ -1,5 +1,6 @@
 {
   lib,
+  cacert,
   fetchFromGitHub,
   rustPlatform,
   fusequota,
@@ -43,6 +44,8 @@ in
 
     # Build only the application binary (wings-rs), not the workspace defaults
     cargoBuildFlags = ["-p" "wings-rs"];
+
+    nativeCheckInputs = [cacert];
 
     # autoPatchelfHook only runs in postFixup, so the test binaries cargo builds
     # during checkPhase are still unpatched and cannot find libstdc++.so.6.
