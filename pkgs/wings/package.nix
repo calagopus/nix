@@ -14,19 +14,19 @@
   zlib,
 }: let
   # Latest stable release: https://github.com/calagopus/wings/releases
-  version = "1.2.7";
+  version = "1.2.8";
   src = fetchFromGitHub {
     owner = "calagopus";
     repo = "wings";
     rev = "release-${version}";
-    sha256 = "sha256-OtWexozdkN4Wnnl7K/OaV/A+zlUdhK7bS+dAMJIwwHk=";
+    sha256 = "sha256-bP5xeVEi8pcoE+z2IoFGf9WpUY8evn3pcxlK+W5U8eQ=";
   };
 in
   rustPlatform.buildRustPackage (finalAttrs: {
     pname = "calagopus-wings";
     inherit version src;
 
-    cargoHash = "sha256-RH2ALlvTIhWkv0ZiFjjdyixSeonYXUGPJNKTsa+/o58=";
+    cargoHash = "sha256-yup4oYYjrp1UXRpYXdRiGgFsp5g1fjTIxtUjiRlX5T4=";
 
     nativeBuildInputs = [
       autoPatchelfHook
