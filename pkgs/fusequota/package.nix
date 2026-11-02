@@ -11,11 +11,11 @@
 }: let
   # Upstream cuts a release per commit on main, tagged with the short commit
   # hash: https://github.com/calagopus/fusequota/releases
-  rev = "a39bc561fbcb8ea1edeebe1838f7b625a987f106";
+  rev = "abb90803d14065bfc09e7f132b00722e957cdf68";
 in
   stdenv.mkDerivation (finalAttrs: {
     pname = "fusequota";
-    version = "9919455-unstable-2026-09-10";
+    version = "9919455-unstable-2026-11-02";
 
     src = fetchFromGitHub {
       owner = "calagopus";
@@ -23,7 +23,7 @@ in
       inherit rev;
       # libfuse is vendored as a submodule, and patched during configure
       fetchSubmodules = true;
-      hash = "sha256-bM6RekIK87Toby1woCy2t8qO2hOpO0ZGOEfVeEGay+M=";
+      hash = "sha256-7IMcC4MZDUJaYfHVnJWW2zxXmj9IUKxBb35oLy7uYoA=";
     };
 
     strictDeps = true;
