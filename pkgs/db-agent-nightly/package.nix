@@ -6,13 +6,13 @@
   cmake,
   perl,
 }: let
-  rev = "18ddcbdf6a5b2786cf658dbe3f36fdd8394ce99f";
+  rev = "c0223fd6b673c835650769f0f57ebbda1d7127c3";
   version = "release-1.2.4-unstable-2026-11-03";
   src = fetchFromGitHub {
     owner = "calagopus";
     repo = "db-agent";
     inherit rev;
-    hash = "sha256-YNRrUDtRrszZ57RP3Ro4yctYjwcVx/QV0frYaG5P2TY=";
+    hash = "sha256-X+SJtmffNCOsxEqDPnGxIJD44ntJYTuLV64VTrH+e9k=";
   };
 in
   rustPlatform.buildRustPackage (finalAttrs: {
