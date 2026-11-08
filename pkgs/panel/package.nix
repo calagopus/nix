@@ -10,12 +10,12 @@
   perl,
   openssl,
 }: let
-  version = "1.2.8";
+  version = "1.2.9";
   src = fetchFromGitHub {
     owner = "calagopus";
     repo = "panel";
     rev = "release-${version}";
-    sha256 = "sha256-+3wohLtlIIEnBcSQZnwlFtyxVUVa0AxE3R3xoxoSrvE=";
+    sha256 = "sha256-H5V3F0oWtilrXup/6xRiMpuTwX5y5j+/GQ/KKDq1WCs=";
   };
   frontend = stdenv.mkDerivation (finalAttrs: {
     pname = "calagopus-panel-frontend";
@@ -32,7 +32,7 @@
     pnpmDeps = fetchPnpmDeps {
       inherit (finalAttrs) pname version src;
       fetcherVersion = 4;
-      hash = "sha256-3c8YGZnBEoJr/uQpnIn3UQLMILVgaMeX8jZ91y/Op7I=";
+      hash = "sha256-Njj940/EPu3+YVzHiJyS9BO28gpVI/Vf80MlxSKEyNk=";
     };
 
     buildPhase = ''
@@ -50,7 +50,7 @@ in
     pname = "calagopus-panel";
     inherit version src;
 
-    cargoHash = "sha256-VVjDvg4RGakdZc5cFy8TZtMg7XM6qBs+2cmF6TU3+Gc=";
+    cargoHash = "sha256-AEa7REp+c1VvGojVSsUx/WHSXBWt8zTMRNNReZKuyFA=";
     cargoBuildFlags = ["-p" "panel-rs"];
     cargoTestFlags = ["-p" "panel-rs"];
 
