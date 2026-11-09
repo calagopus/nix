@@ -6,20 +6,20 @@
   cmake,
   perl,
 }: let
-  rev = "c0223fd6b673c835650769f0f57ebbda1d7127c3";
-  version = "release-1.2.4-unstable-2026-11-03";
+  rev = "049a4c86eb407030a491bed5723a44f27e11da5e";
+  version = "release-1.2.4-unstable-2026-11-09";
   src = fetchFromGitHub {
     owner = "calagopus";
     repo = "db-agent";
     inherit rev;
-    hash = "sha256-X+SJtmffNCOsxEqDPnGxIJD44ntJYTuLV64VTrH+e9k=";
+    hash = "sha256-IXnZpJ13TBn8x8R0xw91kRR9GRDFfle8WXevIM8HjC0=";
   };
 in
   rustPlatform.buildRustPackage (finalAttrs: {
     pname = "calagopus-db-agent-nightly";
     inherit version src;
 
-    cargoHash = "sha256-WzY3hl+FH3yD+2KbvASJjdc/zb2TDfF45Rxy1cSDjwE=";
+    cargoHash = "sha256-pafKxmxsBIxnr8wj7djhnenbOOhRxb56J+vec4YbHJw=";
 
     # aws-lc-sys and zlib-ng are built from source
     nativeBuildInputs = [
