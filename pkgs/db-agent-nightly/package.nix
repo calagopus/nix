@@ -5,6 +5,10 @@
   cacert,
   cmake,
   perl,
+  aws-lc,
+  sqlite,
+  pkg-config,
+  rust-jemalloc-sys,
 }: let
   rev = "6270fb3b8603e9719b2233535d8f9ed2d6730264";
   version = "release-1.2.4-unstable-2026-11-16";
@@ -21,10 +25,18 @@ in
 
     cargoHash = "sha256-pafKxmxsBIxnr8wj7djhnenbOOhRxb56J+vec4YbHJw=";
 
-    # aws-lc-sys and zlib-ng are built from source
+    # zlib-ng is built from source
     nativeBuildInputs = [
       cmake
       perl
+      pkg-config
+    ];
+
+    # cargoSetupHook makes the -sys crates link these instead of vendoring
+    buildInputs = [
+      aws-lc
+      sqlite
+      rust-jemalloc-sys
     ];
 
     # The upgrade tests build a reqwest client, which needs CA certificates

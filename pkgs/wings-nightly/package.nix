@@ -12,6 +12,10 @@
   openssl,
   libssh2,
   zlib,
+  aws-lc,
+  sqlite,
+  zstd,
+  rust-jemalloc-sys,
 }: let
   # Latest main branch commit
   rev = "f39f06d6f5c56f97240d1905016aaaf84d1cf4ce";
@@ -41,6 +45,11 @@ in
       openssl
       libssh2
       zlib
+      # cargoSetupHook makes the -sys crates link these instead of vendoring
+      aws-lc
+      sqlite
+      zstd
+      rust-jemalloc-sys
     ];
 
     cargoBuildFlags = ["-p" "wings-rs"];

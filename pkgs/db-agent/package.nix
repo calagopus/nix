@@ -5,6 +5,9 @@
   cacert,
   cmake,
   perl,
+  aws-lc,
+  sqlite,
+  pkg-config,
 }: let
   version = "1.2.4";
   src = fetchFromGitHub {
@@ -20,10 +23,17 @@ in
 
     cargoHash = "sha256-VeeuZwd3LzizauYcBUgg4xH1919NfcEcyu6ERrSjpx4=";
 
-    # aws-lc-sys and zlib-ng are built from source
+    # zlib-ng is built from source
     nativeBuildInputs = [
       cmake
       perl
+      pkg-config
+    ];
+
+    # cargoSetupHook makes the -sys crates link these instead of vendoring
+    buildInputs = [
+      aws-lc
+      sqlite
     ];
 
     # The upgrade tests build a reqwest client, which needs CA certificates
