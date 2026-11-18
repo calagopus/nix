@@ -10,20 +10,20 @@
   pkg-config,
   rust-jemalloc-sys,
 }: let
-  rev = "6270fb3b8603e9719b2233535d8f9ed2d6730264";
-  version = "release-1.2.4-unstable-2026-11-16";
+  rev = "39e5655e9189a0b24555a7198d9addd6fd42d284";
+  version = "release-1.2.4-unstable-2026-11-18";
   src = fetchFromGitHub {
     owner = "calagopus";
     repo = "db-agent";
     inherit rev;
-    hash = "sha256-j5vOfbM3Z9jiP72TxYn3oNL2T2jE5VEjEhRo6zrLnx0=";
+    hash = "sha256-6/fuZGzDwVkUUyPjHz4uqH/2mV0lI9Vvitw9/sttIIw=";
   };
 in
   rustPlatform.buildRustPackage (finalAttrs: {
     pname = "calagopus-db-agent-nightly";
     inherit version src;
 
-    cargoHash = "sha256-pafKxmxsBIxnr8wj7djhnenbOOhRxb56J+vec4YbHJw=";
+    cargoHash = "sha256-Yc3+Jnjv/jVlcETDrNvfeZhtOk6pNNT07+1yjAiBJmk=";
 
     # zlib-ng is built from source
     nativeBuildInputs = [
