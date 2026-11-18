@@ -12,6 +12,10 @@
   openssl,
   libssh2,
   zlib,
+  aws-lc,
+  sqlite,
+  zstd,
+  rust-jemalloc-sys,
 }: let
   # Latest stable release: https://github.com/calagopus/wings/releases
   version = "1.2.10";
@@ -40,6 +44,11 @@ in
       openssl
       libssh2
       zlib
+      # cargoSetupHook makes the -sys crates link these instead of vendoring
+      aws-lc
+      sqlite
+      zstd
+      rust-jemalloc-sys
     ];
 
     # Build only the application binary (wings-rs), not the workspace defaults

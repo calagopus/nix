@@ -9,6 +9,10 @@
   rustPlatform,
   perl,
   openssl,
+  pkg-config,
+  aws-lc,
+  sqlite,
+  zstd,
 }: let
   version = "b0eb2bf2262af57b7e4dc9c7ba87f48deb1da6f6";
   src = fetchFromGitHub {
@@ -58,6 +62,14 @@ in
     nativeBuildInputs = [
       perl
       openssl
+      pkg-config
+    ];
+
+    # cargoSetupHook makes the -sys crates link these instead of vendoring
+    buildInputs = [
+      aws-lc
+      sqlite
+      zstd
     ];
     env = {
       CARGO_GIT_BRANCH = "unknown";
