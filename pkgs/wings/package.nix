@@ -56,7 +56,7 @@ in
 
     nativeCheckInputs = [cacert];
 
-    # flaky on github runners
+    # no inotify in the sandbox
     checkFlags = ["--skip=server::filesystem::inotify::tests"];
 
     # autoPatchelfHook only runs in postFixup, so the test binaries cargo builds
