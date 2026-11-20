@@ -56,6 +56,9 @@ in
 
     nativeCheckInputs = [cacert];
 
+    # no inotify in the sandbox
+    checkFlags = ["--skip=server::filesystem::inotify::tests"];
+
     # autoPatchelfHook only runs in postFixup, so the test binaries cargo builds
     # during checkPhase are still unpatched and cannot find libstdc++.so.6.
     preCheck = ''
