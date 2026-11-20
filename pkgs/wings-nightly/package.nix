@@ -18,13 +18,13 @@
   rust-jemalloc-sys,
 }: let
   # Latest main branch commit
-  rev = "9b10b2a98be981dad8231ab63cd381bd74bdfcc7";
-  version = "release-1.2.10-unstable-2026-11-18";
+  rev = "6e1591b13a290f326726d902cecfb5079df2b53e";
+  version = "release-1.2.10-unstable-2026-11-20";
   src = fetchFromGitHub {
     owner = "calagopus";
     repo = "wings";
     inherit rev;
-    sha256 = "sha256-3IJGjJIV8QllPV9EcUKu+nYAe6cgCfYiQ3i5Mb2onW0=";
+    sha256 = "sha256-AkThbiAQtEyEe3RPIN6h+0nRA0W9JEk3zwj69xmXYt8=";
   };
 in
   rustPlatform.buildRustPackage (finalAttrs: {
