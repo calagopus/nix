@@ -14,12 +14,12 @@
   sqlite,
   zstd,
 }: let
-  version = "1.2.10";
+  version = "1.2.11";
   src = fetchFromGitHub {
     owner = "calagopus";
     repo = "panel";
     rev = "release-${version}";
-    sha256 = "sha256-VE16VfE3koVpLb20Ofqf3DuaiCL/JK7orLmElAJkHDY=";
+    sha256 = "sha256-r4JGdEpyXttUD7ga5bq75/zG7PKCuLD7oIa1agdiNSM=";
   };
   frontend = stdenv.mkDerivation (finalAttrs: {
     pname = "calagopus-panel-frontend";
@@ -54,7 +54,7 @@ in
     pname = "calagopus-panel";
     inherit version src;
 
-    cargoHash = "sha256-pdW0IGsYm6u7qUtfWV6PTbu8MPSVdPF/XB7jbRi32ow=";
+    cargoHash = "sha256-H77b/6CxK33cUCy4tQ+8qSBD021CzhHpE9aPLJPkTu4=";
     cargoBuildFlags = ["-p" "panel-rs"];
     cargoTestFlags = ["-p" "panel-rs"];
 
