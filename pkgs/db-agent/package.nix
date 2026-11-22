@@ -9,19 +9,19 @@
   sqlite,
   pkg-config,
 }: let
-  version = "1.2.4";
+  version = "1.2.5";
   src = fetchFromGitHub {
     owner = "calagopus";
     repo = "db-agent";
     rev = "release-${version}";
-    hash = "sha256-TouLiXPRyCdT9c+1e88l7myqBFeKsYzcaJzj+q83XR0=";
+    hash = "sha256-6gcmXTGeZtFgEc+Xjg9LY64ZmsRvpMls+N37bOOujak=";
   };
 in
   rustPlatform.buildRustPackage (finalAttrs: {
     pname = "calagopus-db-agent";
     inherit version src;
 
-    cargoHash = "sha256-VeeuZwd3LzizauYcBUgg4xH1919NfcEcyu6ERrSjpx4=";
+    cargoHash = "sha256-Yc3+Jnjv/jVlcETDrNvfeZhtOk6pNNT07+1yjAiBJmk=";
 
     # zlib-ng is built from source
     nativeBuildInputs = [
