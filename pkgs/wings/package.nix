@@ -18,19 +18,19 @@
   rust-jemalloc-sys,
 }: let
   # Latest stable release: https://github.com/calagopus/wings/releases
-  version = "1.2.10";
+  version = "1.2.11";
   src = fetchFromGitHub {
     owner = "calagopus";
     repo = "wings";
     rev = "release-${version}";
-    sha256 = "sha256-qQgns9IX22tIc0U7lCcY7kZuRI0Td3Mvc45qtT+Il+U=";
+    sha256 = "sha256-AkThbiAQtEyEe3RPIN6h+0nRA0W9JEk3zwj69xmXYt8=";
   };
 in
   rustPlatform.buildRustPackage (finalAttrs: {
     pname = "calagopus-wings";
     inherit version src;
 
-    cargoHash = "sha256-Kmf5R4xPW5q0q6x/iaYlJfyHG45/hSKdgP0B8estsHM=";
+    cargoHash = "sha256-WNrll+5lAGAZRX0CSc0stD68u02phH6tUsGUe0Tapx8=";
 
     nativeBuildInputs = [
       autoPatchelfHook
