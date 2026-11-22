@@ -11,7 +11,7 @@
   rust-jemalloc-sys,
 }: let
   rev = "3214051164cf6f37ae5eca28f8c25ac234a1e1d1";
-  version = "release-1.2.4-unstable-2026-11-21";
+  version = "release-1.2.5-unstable-2026-11-21";
   src = fetchFromGitHub {
     owner = "calagopus";
     repo = "db-agent";
